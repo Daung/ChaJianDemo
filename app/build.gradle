@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION.toInteger()
+    buildToolsVersion BUILD_TOOLS_VERSION.toString()
+
+    defaultConfig {
+        applicationId "com.wzy.chajiandemo"
+        minSdkVersion MIN_SDK_VERSION.toInteger()
+        targetSdkVersion TARGET_SDK_VERSION.toInteger()
+        versionCode VERSION_CODE.toInteger()
+        versionName VERSION_NAME.toString()
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:${appx_version}"
+    implementation project(path: ':baselib')
+    if (!isMyModule.toBoolean()) {
+        implementation project(path: ':loginmodule')
+    }
+
+    if (!isLoginModule.toBoolean()) {
+        implementation project(path: ':mymodule')
+    }
+
+
+}

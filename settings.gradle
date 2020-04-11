@@ -1,0 +1,5 @@
+rootProject.name='ChaJianDemo'
+include ':app'
+include ':loginmodule'
+include ':mymodule'
+include ':baselib'
